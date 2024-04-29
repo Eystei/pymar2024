@@ -1,9 +1,10 @@
 # pymar2024
-Python test automation course
 
-Author: Yura Buzinau
+<h3>Python test automation course</h3>
+<b>Author:</b> Yura Buzinau
+<hr>
 
-Course Description:
+<b>Course Description:</b>
 
 This course is an introduction to software testing using the Python programming 
 language. Throughout the course, we will cover the fundamental concepts and tools 
