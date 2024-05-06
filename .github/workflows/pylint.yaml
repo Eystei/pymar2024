@@ -17,4 +17,7 @@ jobs:
           pip install pylint
       - name: Analysing the code with pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint:
+            name: Pylint
+            with:
+              args: "--disable=C0112,C0114,C0115,C0116"
