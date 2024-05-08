@@ -1,0 +1,30 @@
+name: Run All Checks
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-all-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Flake8
+        uses: ./.github/workflows/flake8.yaml  # Путь к файлу конфигурации Flake8
+
+      - name: Run Mypy
+        uses: ./.github/workflows/mypy.yaml
+
+      - name: Run PR Check Name
+        uses: ./.github/workflows/pr_check_name.yaml
+
+      - name: Run Pycodestyle
+        uses: ./.github/workflows/pycodestyle.yaml
+
+      - name: Run Pylint
+        uses: ./.github/workflows/pylint.yaml
+
+      - name: Run Ruff
+        uses: ./.github/workflows/ruff.yaml
