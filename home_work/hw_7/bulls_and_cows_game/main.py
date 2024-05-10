@@ -3,7 +3,6 @@ import sys
 
 from home_work.hw_7.bulls_and_cows_game.bulls_and_cows import BullsAndCows
 
-
 # Быки и коровы
 # В классическом варианте игра рассчитана на двух игроков.
 # Каждый из игроков задумывает и записывает тайное 4-значное число с неповторяющимися цифрами.
@@ -32,17 +31,16 @@ if __name__ == '__main__':
     print("\nTip: If you want to stop game. Enter: 'Exit'")
 
     while True:
-        user_guess = input("Enter your guess:\n> ")
-        print(game.secret_number)
+        guess = input("Enter your guess:\n> ")
 
-        if user_guess.lower() == "exit":
+        if guess.lower() == "exit":
             sys.exit()
 
-        if len(user_guess) != 4 or user_guess.isdigit() == 0:
-            print("Please enter 4-digit number.")
+        if len(guess) != 4 or guess.isdigit() == 0 or len(set(guess)) != 4:
+            print("Please enter a non-repeating 4-digit number")
             continue
 
-        bulls, cows = game.check_guess(guess=user_guess)
+        bulls, cows = game.check_guess(guess=guess)
         print(f"Bulls: {bulls} | Cows: {cows}")
 
         if bulls == 4:

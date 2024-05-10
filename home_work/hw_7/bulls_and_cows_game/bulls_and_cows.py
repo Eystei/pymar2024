@@ -6,17 +6,13 @@ import random
 import string
 
 
+# pylint: disable=too-few-public-methods
 class BullsAndCows:
     """Bulls and Cows game implementation."""
 
     def __init__(self):
         """Initializes a new instance of the BullsAndCows class."""
-        self.secret_number = self.gen_four_digit_num()
-
-    @staticmethod
-    def gen_four_digit_num():
-        """Generates a random four-digit number."""
-        return "".join(random.sample(string.digits, 4))
+        self.secret_number = "".join(random.sample(string.digits, 4))
 
     def check_guess(self, guess):
         """
@@ -29,8 +25,7 @@ class BullsAndCows:
         for i in range(4):
             if guess[i] == self.secret_number[i]:
                 bulls += 1
-
-            if guess[i] in self.secret_number:
+            elif guess[i] in self.secret_number:
                 cows += 1
 
         return bulls, cows

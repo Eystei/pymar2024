@@ -1,31 +1,26 @@
 """Module for the Likes class implementation."""
 
 
+# pylint: disable=too-few-public-methods
 class Likes:
     @staticmethod
-    def likes(*names: str | list[str]) -> str:
-        if all(isinstance(name, (str, list)) for name in names) == 0:
-            raise TypeError("Names must be strings or lists of strings")
+    def likes(*names: str) -> str:
 
-        names_list: list[str] = []
-        for name in names:
-            if isinstance(name, str):
-                names_list.append(name)
-            else:
-                names_list.extend(name)
+        if not all(isinstance(name, str) and name for name in names):
+            raise TypeError("Names must be strings and not empty string.")
 
-        num_likes = len(names_list)
+        num_likes = len(names)
 
         if num_likes == 0:
             return "no one likes this"
 
         if num_likes == 1:
-            return f"{names_list[0]} likes this"
+            return f"{names[0]} likes this"
 
         if num_likes == 2:
-            return f"{names_list[0]} and {names_list[1]} like this"
+            return f"{names[0]} and {names[1]} like this"
 
         if num_likes == 3:
-            return f"{names_list[0]}, {names_list[1]} and {names_list[2]} like this"
+            return f"{names[0]}, {names[1]} and {names[2]} like this"
 
-        return f"{names_list[0]}, {names_list[1]} and {num_likes - 2} others like this"
+        return f"{names[0]}, {names[1]} and {num_likes - 2} others like this"
