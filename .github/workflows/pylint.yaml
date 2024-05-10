@@ -1,6 +1,10 @@
 name: Pylint
 
-on: [pull_request, workflow_dispatch]
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+    branches: [main]
 
 jobs:
   build:
@@ -17,7 +21,4 @@ jobs:
           pip install pylint
       - name: Analysing the code with pylint
         run: |
-          pylint:
-            name: Pylint
-            with:
-              args: "--disable=C0112,C0114,C0115,C0116"
+          pylint --disable=C0112,C0114,C0115,C0116 *.py
