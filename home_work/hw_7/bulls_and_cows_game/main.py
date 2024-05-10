@@ -1,7 +1,6 @@
 """main.py module"""
 import sys
 
-from home_work.hw_7.bulls_and_cows_game.ascii_title import GAME_TITLE
 from home_work.hw_7.bulls_and_cows_game.bulls_and_cows import BullsAndCows
 
 
@@ -28,7 +27,6 @@ from home_work.hw_7.bulls_and_cows_game.bulls_and_cows import BullsAndCows
 if __name__ == '__main__':
     game = BullsAndCows()
 
-    print(GAME_TITLE)
     print("\nWelcome to the Bulls and Cows game!")
     print("The computer has chosen a 4-digit number. Try to guess it!")
     print("\nTip: If you want to stop game. Enter: 'Exit'")
