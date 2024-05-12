@@ -6,7 +6,7 @@ This module contains the main function for executing the program.
 
 def main():
     """Main function.
-    This function prints the greeting "Hello world!" to the console.
+    This function  prints the greeting "Hello world!" to the console.
     """
     print("Hello world!")
 
