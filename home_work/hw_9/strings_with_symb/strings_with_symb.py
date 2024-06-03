@@ -8,8 +8,6 @@ C = "abc##d######"  # ==>  ""
 D = "#######"  # ==>  ""
 E = ""  # ==>  ""
 
-ALL_STRINGS = [A, B, C, D, E]
-
 
 def remove_char_with_next_hash_sign(text: str) -> str:
     """    Remove characters followed by a hash sign from the text.
@@ -25,9 +23,15 @@ def remove_char_with_next_hash_sign(text: str) -> str:
     return text
 
 
-if __name__ == '__main__':
-    for string in ALL_STRINGS:
-        if all(char == '#' for char in string) or not string:
-            print('')
-        else:
-            print(remove_char_with_next_hash_sign(string))
+def process_string(str_: str) -> str:
+    """Process the string according to specified rules."""
+    if all(char == '#' for char in str_) or not str_:
+        return ''
+    return remove_char_with_next_hash_sign(str_)
+
+
+assert process_string(A) == "bd", "Expected 'bd'"
+assert process_string(B) == "ac", "Expected 'ac'"
+assert process_string(C) == "", "Expected: empty string"
+assert process_string(D) == "", "Expected: empty string"
+assert process_string(E) == "", "Expected: empty string"

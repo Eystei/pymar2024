@@ -10,8 +10,6 @@ C = "aaabbceedd"  # == "a3b2ce2d2"
 D = "abcde"  # == "abcde"
 E = "aaabbdefffff"  # == "a3b2def5"
 
-ALL_STRINGS = [A, B, C, D, E]
-
 
 def count_char(text: str) -> str:
     """Count consecutive characters in a string.
@@ -23,7 +21,8 @@ def count_char(text: str) -> str:
     return ''.join([f"{i}{j}" for i, j in combo]).replace('1', '')
 
 
-if __name__ == '__main__':
-
-    for string in ALL_STRINGS:
-        print(count_char(string))
+assert count_char(A) == "c3b2a", "Expected 'c3b2a'"
+assert count_char(B) == "abe2h5c3ed", "Expected 'abe2h5c3ed'"
+assert count_char(C) == "a3b2ce2d2", "Expected 'a3b2ce2d2'"
+assert count_char(D) == "abcde", "Expected 'abcde'"
+assert count_char(E) == "a3b2def5", "Expected 'a3b2def5'"
