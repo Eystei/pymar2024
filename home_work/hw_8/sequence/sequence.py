@@ -27,12 +27,14 @@ def solution(seq):
     return len(temp) <= 1
 
 
-if __name__ == '__main__':
-    print(solution([1]))
-    print(solution([1, 2, 3]))
-    print(solution([1, 2, 1, 2]))
-    print(solution([3, 1, 2, 3]))
-    print(solution([1, 3, 2, 1]))
-    print(solution([1, 2, 1, 2]))
-    print(solution([1, 2, 3, 4, 5, 3, 5, 6]))
-    print(solution([40, 50, 60, 10, 20, 30]))
+assert solution([1]), "Expected True in sequence [1]"
+assert solution([1, 2, 3]), "Expected True in sequence [1, 2, 3]"
+assert solution([3, 1, 2, 3]), "Expected True in sequence [3, 1, 2, 3]"
+
+assert not solution([1, 2, 1, 2]), "Expected False in sequence [1, 2, 1, 2]"
+assert not solution([1, 3, 2, 1]), "Expected False in sequence [1, 3, 2, 1]"
+assert not solution([1, 2, 1, 2]), "Expected False in sequence [1, 2, 1, 2]"
+assert not solution([1, 2, 3, 4, 5, 3, 5, 6]), \
+    "Expected False in sequence [1, 2, 3, 4, 5, 3, 5, 6]"
+assert not solution([40, 50, 60, 10, 20, 30]), \
+    "Expected False in sequence [40, 50, 60, 10, 20, 30]"
