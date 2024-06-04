@@ -1,5 +1,5 @@
 """Module for type-based decorator."""
-import loguru
+from loguru import logger
 
 
 def typed(type_):
@@ -72,7 +72,7 @@ def add(type_, *args, **kwargs):
     elif type_ in [int, float]:
         return sum(args) + sum(kwargs.values())
     else:
-        loguru.logger.error("Function support only str | float | int")
+        logger.error("Function support only str | float | int")
         raise TypeError("Function support only str | float | int")
 
 
