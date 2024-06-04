@@ -10,10 +10,10 @@ def cache(func):
         if arg in cache_storage:
             logger.debug(f'def {func.__name__} | {arg} Received from cache')
             return cache_storage[arg]
-
-        result = func(arg)
-        cache_storage[arg] = result
-        return result
+        else:
+            result = func(arg)
+            cache_storage[arg] = result
+            return result
 
     return wrapper
 
