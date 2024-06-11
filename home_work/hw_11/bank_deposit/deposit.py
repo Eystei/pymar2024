@@ -3,6 +3,8 @@ INTEREST_RATE_DEFAULT = 0.10
 
 
 class Deposit:
+    __slots__ = ('initial_investment', 'investment_len_in_years', 'interest_rate')
+
     def __init__(self,
                  initial_investment: int,
                  investment_in_years: int,
@@ -22,9 +24,3 @@ class Deposit:
         months = self.investment_len_in_years * MONTHS_IN_YEAR
         ending_balance = self.initial_investment * (1 + monthly_rate) ** months
         return round(ending_balance, 2)
-
-
-def calc_end_balance(depo: Deposit):
-    """ Calculates the final amount of a deposit."""
-
-    return depo.calculate_final_amount()
