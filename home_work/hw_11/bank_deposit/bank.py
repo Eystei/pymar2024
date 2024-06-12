@@ -33,16 +33,20 @@ class Bank:
     def calc_interest_rate(self, client_id):
         if client_id not in self.clients:
             log.warning('Client not registered')
+            return None
         elif self.deposits[client_id] is None:
             log.warning("Client doesn't have a deposit")
+            return None
         else:
             return self.deposits[client_id].calculate_final_amount()
 
     def close_deposit(self, client_id):
         if client_id not in self.clients:
             log.warning('Client not registered')
+            return None
         elif self.deposits[client_id] is None:
             log.warning("Client doesn't have a deposit")
+            return None
         else:
             total = self.calc_interest_rate(client_id)
             self.deposits[client_id] = None
