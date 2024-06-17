@@ -9,12 +9,14 @@ class Book:
         self.isbn = isbn
         self.reserved = False
         self.reserved_by = None
-        self.somebody_read = False
         self.reader_name = None
 
     def reserve(self, reader_name):
         if self.reserved:
-            log.info(f"Sorry, this book reserved by {self.reserved_by}.")
+            log.info(f"Sorry, this book is reserved by {self.reserved_by}.")
+            return False
+        elif self.reader_name:
+            log.info(f"Sorry, this book is currently being read by {self.reader_name}.")
             return False
         else:
             self.reserved = True
@@ -33,18 +35,13 @@ class Book:
             return True
 
     def get_book(self, reader_name):
-
-        if self.reader_name and not self.reserved:
-            log.warning(f"This book read {self.reader_name} but you can reserve it.")
-            return False
-        elif self.reader_name and self.reserved:
-            log.info(f"This book read {self.reader_name} and somebody reserved it.")
+        if self.reader_name:
+            log.warning(f"This book is currently being read by {self.reader_name}.")
             return False
         elif self.reserved and self.reserved_by != reader_name:
-            log.info(f"Oooops. This book reserved by {self.reserved_by}.")
+            log.info(f"Oops. This book is reserved by {self.reserved_by}.")
             return False
         else:
-            self.somebody_read = True
             self.reader_name = reader_name
             self.reserved = False
             self.reserved_by = None
@@ -53,7 +50,6 @@ class Book:
 
     def return_book(self, reader_name):
         if reader_name == self.reader_name:
-            self.somebody_read = False
             self.reader_name = None
             log.success("Thanks. Book has been returned.")
             return True
