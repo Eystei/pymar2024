@@ -1,6 +1,6 @@
 import random
 import sys
-from card import Card
+from home_work.hw_12.card_deck.card import Card
 
 CHOOSE_CARD_TEXT_EN = 'Choose a card from the deck (from 1 to {}):\n> '
 ERROR_LEN_DECK = 'Error: enter a card number from 1 to {}'

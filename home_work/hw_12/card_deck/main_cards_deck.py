@@ -1,4 +1,4 @@
-from cards_deck import CardsDeck
+from home_work.hw_12.card_deck.cards_deck import CardsDeck
 
 
 def main():
