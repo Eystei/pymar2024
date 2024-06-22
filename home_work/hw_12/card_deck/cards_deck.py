@@ -18,7 +18,7 @@ class CardsDeck:
     def get_card(self):
         card_number = self._input_card_number()
         if card_number is not None:
-            self.cards.pop(card_number).show_card()
+            print(self.cards.pop(card_number))
 
     def show_remaining_cards(self):
         for i, card in enumerate(self.cards):
@@ -37,7 +37,7 @@ class CardsDeck:
                 card_num = int(input(CHOOSE_CARD_TEXT_EN.format(len(self.cards)))) - 1
 
                 # EXIT: If User Input == -100 or Card Deck is Empty
-                if card_num + 1 == -100 or not len(self.cards):
+                if card_num + 1 == -100 or not self.cards:
                     sys.exit()
 
                 if valid_card_num := self._card_validator(card_num) is not None:

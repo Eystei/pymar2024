@@ -7,21 +7,20 @@ API_URL = f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/USD"
 
 class CurrencyConverter:
 
-    @classmethod
-    def _get_exchange_rates(cls):
+    @staticmethod
+    def _get_exchange_rates():
 
         response = requests.get(API_URL, timeout=5)
         response.raise_for_status()
         return response.json()['conversion_rates']
 
-    @classmethod
-    def convert(cls,
-                from_curr: str,
+    @staticmethod
+    def convert(from_curr: str,
                 amount: int,
                 to_curr: str = 'BYN',
                 round_to: int = 2):
 
-        rates = cls._get_exchange_rates()
+        rates = CurrencyConverter._get_exchange_rates()
 
         if from_curr not in rates:
             log.error(f"Unsupported currency: {from_curr}")

@@ -9,6 +9,3 @@ class Card:
 
     def __str__(self):
         return f'{self.mast} {self.number}'
-
-    def show_card(self):
-        print(f'{self.mast} {self.number}')
