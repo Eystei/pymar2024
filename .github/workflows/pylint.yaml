@@ -20,5 +20,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install pylint
       - name: Analysing the code with pylint
-        run: |
+        run: >
           pylint --disable=C0112,C0114,C0115,C0116,C0103,R1705,R0903,R0902,W0123 *.py
