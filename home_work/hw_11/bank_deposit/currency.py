@@ -1,8 +1,19 @@
+import os
 import requests
 from loguru import logger as log
+from dotenv import load_dotenv
+from home_work.hw_11.bank_deposit.currency_enum import Currency
 
-API_KEY = '1240d98b1bc1385eea7ad602'
-API_URL = f"https://v6.exchangerate-api.com/v6/{API_KEY}/latest/USD"
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
+BASE_URL = "https://v6.exchangerate-api.com/v6/"
+BASE_CURRENCY = Currency.USD.value
+URL = f"{BASE_URL}{API_KEY}/latest/{BASE_CURRENCY}"
+HEADERS = {
+    'Content-Type': 'application/json',
+    'Authorization': f'Bearer {API_KEY}'
+}
 
 
 class CurrencyConverter:
@@ -10,7 +21,7 @@ class CurrencyConverter:
     @staticmethod
     def _get_exchange_rates():
 
-        response = requests.get(API_URL, timeout=5)
+        response = requests.get(URL, headers=HEADERS, timeout=5)
         response.raise_for_status()
         return response.json()['conversion_rates']
 
