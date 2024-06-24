@@ -1,9 +1,15 @@
 from pprint import pprint
 import yaml
 
-with open('temp_data/data.yaml') as f:
-    temp = yaml.safe_load(f)
+from home_work.other.json_handling import JsonHandling
 
-pprint(temp)
-print(type(temp))
+with open('_test.yaml') as f:
+    dict_ = yaml.safe_load(f)
 
+a = JsonHandling.find_value_by_key(data=dict_, key='name', find_all=True)
+
+# pprint(dict_)
+
+b = JsonHandling.deep_value_search(data=dict_, target_value='Amina', find_all=True)
+
+pprint(a)

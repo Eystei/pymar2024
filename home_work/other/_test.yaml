@@ -1,0 +1,138 @@
+employees:
+- id: 1
+  name: Amina
+  surname: Petrou
+  title: Sales manager
+  manager_id: 2
+  salary: 1000
+  year_bonus: 2
+  department: sales
+  start_date: 01-01-2022
+  kpi_agreed: yes
+  kpi_achieved: yes
+  document_number: MP12345624
+  personal_number: 7462893498147342
+  driving_license: yes
+  address:
+    country: Turkey
+    city: Antalya
+    province: Antalya
+    street: Kuşkavağı, Akdeniz Blv. No:130/B
+    zip: 07070
+  vacation_days_left: 26
+  sick_leave_left: 3
+
+- id: 2
+  name: Aliya
+  surname: Karamova
+  title: Marketing Specialist
+  manager_id: 2
+  salary: 1200
+  year_bonus: 3
+  department: marketing
+  start_date: 15-03-2021
+  kpi_agreed: yes
+  kpi_achieved: yes
+  document_number: MK87654321
+  personal_number: 8273648273648234
+  driving_license: no
+  address:
+    country: Kazakhstan
+    city: Almaty
+    province: Almaty
+    street: Dostyk Avenue 240
+    zip: 050000
+  vacation_days_left: 22
+  sick_leave_left: 5
+
+- id: 3
+  name: Yuki
+  surname: Nakamura
+  title: Software Engineer
+  manager_id: 2
+  salary: 2000
+  year_bonus: 5
+  department: IT
+  start_date: 01-11-2020
+  kpi_agreed: yes
+  kpi_achieved: no
+  document_number: IN23456789
+  personal_number: 9273648273648235
+  driving_license: yes
+  address:
+    country: Japan
+    city: Tokyo
+    province: Tokyo
+    street: 3 Chome-1-1 Minato
+    zip: 1050001
+  vacation_days_left: 18
+  sick_leave_left: 4
+
+- id: 4
+  name: Maria
+  surname: Garcia
+  title: HR Manager
+  manager_id: 3
+  salary: 1500
+  year_bonus: 4
+  department: HR
+  start_date: 10-06-2019
+  kpi_agreed: yes
+  kpi_achieved: yes
+  document_number: HR34567890
+  personal_number: 7263847263847264
+  driving_license: yes
+  address:
+    country: Spain
+    city: Madrid
+    province: Madrid
+    street: Calle de Serrano 110
+    zip: 28006
+  vacation_days_left: 24
+  sick_leave_left: 2
+
+- id: 5
+  name: Ivan
+  surname: Petrov
+  title: Financial Analyst
+  manager_id: 1
+  salary: 1700
+  year_bonus: 3
+  department: finance
+  start_date: 20-02-2021
+  kpi_agreed: yes
+  kpi_achieved: no
+  document_number: FN45678901
+  personal_number: 8364928364928364
+  driving_license: no
+  address:
+    country: Russia
+    city: Moscow
+    province: Moscow
+    street: Tverskaya Street 7
+    zip: 125009
+  vacation_days_left: 20
+  sick_leave_left: 6
+
+- id: 6
+  name: Amina
+  surname: Nasser
+  title: Customer Support
+  manager_id: 4
+  salary: 900
+  year_bonus: 1
+  department: support
+  start_date: 01-05-2022
+  kpi_agreed: yes
+  kpi_achieved: yes
+  document_number: CS56789012
+  personal_number: 9172639172639172
+  driving_license: no
+  address:
+    country: Egypt
+    city: Cairo
+    province: Cairo
+    street: Zamalek 15
+    zip: 11211
+  vacation_days_left: 28
+  sick_leave_left: 2
