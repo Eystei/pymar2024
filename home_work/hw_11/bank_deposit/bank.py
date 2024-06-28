@@ -1,5 +1,6 @@
 from loguru import logger as log
 
+from home_work.hw_11.bank_deposit.currency import CurrencyConverter
 from home_work.hw_11.bank_deposit.deposit import Deposit
 
 
@@ -52,3 +53,18 @@ class Bank:
             self.deposits[client_id] = None
             log.success(f"Client id: {client_id} close deposit. {total}")
             return total
+
+    @staticmethod
+    def exchange_currency(from_curr, amount, to_curr='BYN'):
+
+        from_curr = from_curr.upper()
+        to_curr = to_curr.upper()
+
+        converted, target_curr = CurrencyConverter.convert(from_curr, amount, to_curr)
+
+        if not converted:
+            log.error("Conversion failed")
+            return False
+
+        log.success(f"Converted {amount} {from_curr} to {converted} {target_curr}")
+        return converted, converted
