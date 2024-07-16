@@ -1,7 +1,9 @@
-from loguru import logger as log
-
 from home_work.hw_11.bank_deposit.currency import CurrencyConverter
 from home_work.hw_11.bank_deposit.deposit import Deposit
+
+from log_.logging_setup import get_logger
+
+log = get_logger(__name__)
 
 
 class Bank:

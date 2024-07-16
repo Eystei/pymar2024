@@ -1,14 +1,17 @@
 import os
 import requests
-from loguru import logger as log
 from dotenv import load_dotenv
 from home_work.hw_11.bank_deposit.currency_enum import Currency
+
+from log_.logging_setup import get_logger
+
+log = get_logger(__name__)
 
 load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
 BASE_URL = "https://v6.exchangerate-api.com/v6/"
-BASE_CURRENCY = Currency.USD.value
+BASE_CURRENCY = Currency.USD
 URL = f"{BASE_URL}{API_KEY}/latest/{BASE_CURRENCY}"
 HEADERS = {
     'Content-Type': 'application/json',
