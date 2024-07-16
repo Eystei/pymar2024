@@ -27,7 +27,9 @@ def setup_logging():
 
         for handler in config['handlers'].values():
             if 'filename' in handler:
-                handler['filename'] = os.path.join(log_directory, os.path.basename(handler['filename']))
+                handler['filename'] = os.path.join(
+                    log_directory,
+                    os.path.basename(handler['filename']))
 
         logging.config.dictConfig(config)
         logging_initialized = True
