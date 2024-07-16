@@ -67,7 +67,7 @@ def add(type_, *args, **kwargs):
     args = [arg if isinstance(arg, type_) else type_(arg) for arg in args]
     kwargs = {k: v if isinstance(v, type_) else type_(v) for k, v in kwargs.items()}
 
-    if type_ == str:
+    if isinstance(type_, str):
         return ''.join(args) + ''.join(kwargs.values())
     elif type_ in [int, float]:
         return sum(args) + sum(kwargs.values())
