@@ -1,7 +1,9 @@
-from loguru import logger as log
-
 from home_work.hw_11.bank_deposit.currency import CurrencyConverter
 from home_work.hw_11.bank_deposit.deposit import Deposit
+
+from log_.logging_setup import get_logger
+
+log = get_logger(__name__)
 
 
 class Bank:
@@ -16,20 +18,25 @@ class Bank:
             self.clients[client_id] = name
             self.deposits[client_id] = None
             log.success(f'Client registered. id: {client_id}')
+            return True
         else:
             log.warning(f'Client {client_id} already registered')
+            return False
 
     def open_deposit_account(self, client_id, start_balance, years):
         if client_id not in self.clients:
             log.warning(f"Client {client_id} not registered")
+            return False
         elif self.deposits[client_id] is not None:
             log.warning(f"Client {client_id} already has a deposit")
+            return False
         else:
             self.deposits[client_id] = Deposit(
                 initial_investment=start_balance,
                 investment_in_years=years
             )
             log.success(f"Deposit has created for client id: {client_id}")
+            return True
 
     def calc_interest_rate(self, client_id):
         if client_id not in self.clients:
