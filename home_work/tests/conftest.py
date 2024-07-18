@@ -3,7 +3,7 @@ from log_.logging_setup import setup_logging, get_logger
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--log-level",
+        "--custom-log-level",
         action="store",
         default="INFO",
         help="Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL, TEST, SUCCESS)"
@@ -12,7 +12,9 @@ def pytest_addoption(parser):
 
 def pytest_configure(config):
     setup_logging()
-    log_level = config.getoption("--log-level")
+    log_level = config.getoption("--custom-log-level")
+    if log_level is None:
+        log_level = 'INFO'
     logger = get_logger("pytest_logger")
     logger.setLevel(log_level.upper())
 
