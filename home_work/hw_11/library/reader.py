@@ -1,4 +1,6 @@
-from loguru import logger as log
+from log_.logging_setup import get_logger
+
+log = get_logger(__name__)
 
 
 class Reader:
@@ -7,27 +9,35 @@ class Reader:
         self.lib_books = []
 
     def reserve_book(self, book):
-        if book.reserve(self.name):
+        result = book.reserve(self.name)
+        if result:
             log.success(f"{self.name} reserved '{book.book_name}'.")
         else:
             log.error(f"{self.name} could not reserve '{book.book_name}'.")
+        return result
 
     def cancel_reserve(self, book):
-        if book.cancel_reserve(self.name):
-            log.success(f"{self.name} cancel reserve '{book.book_name}'.")
+        result = book.cancel_reserve(self.name)
+        if result:
+            log.success(f"{self.name} canceled reserve for '{book.book_name}'.")
         else:
-            log.error(f"{self.name} could not cancel reserve '{book.book_name}'.")
+            log.error(f"{self.name} could not cancel reserve for '{book.book_name}'.")
+        return result
 
     def get_book(self, book):
-        if book.get_book(self.name):
+        result = book.get_book(self.name)
+        if result:
             self.lib_books.append(book)
-            log.success(f"{self.name} get '{book.book_name}'.")
+            log.success(f"{self.name} got '{book.book_name}'.")
         else:
             log.error(f"{self.name} could not get '{book.book_name}'.")
+        return result
 
     def return_book(self, book):
-        if book.return_book(self.name):
+        result = book.return_book(self.name)
+        if result:
             self.lib_books.remove(book)
             log.success(f"{self.name} returned '{book.book_name}'.")
         else:
             log.error(f"{self.name} could not return '{book.book_name}'.")
+        return result

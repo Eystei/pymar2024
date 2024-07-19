@@ -1,0 +1,5 @@
+# to activate the logger in any module use this construction
+
+from log_config.logging_setup import get_logger
+
+logger = get_logger(__name__)

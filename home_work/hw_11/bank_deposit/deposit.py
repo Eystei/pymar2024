@@ -10,6 +10,9 @@ class Deposit:
                  investment_in_years: int,
                  interest_rate: float | int = INTEREST_RATE_DEFAULT):
 
+        if initial_investment < 0:
+            raise ValueError("Initial investment cannot be negative")
+
         self.initial_investment = initial_investment
         self.investment_len_in_years = investment_in_years
         self.interest_rate = interest_rate
