@@ -1,4 +1,6 @@
-from loguru import logger as log
+from log_.logging_setup import get_logger
+
+log = get_logger(__name__)
 
 
 class Book:
