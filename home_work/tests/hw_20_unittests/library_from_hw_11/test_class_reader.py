@@ -3,8 +3,8 @@ import logging
 from home_work.hw_11.library.reader import Reader
 from home_work.hw_11.library.book import Book
 
-
 logger = logging.getLogger(__name__)
+
 
 class TestReader(TestCase):
     def setUp(self):
