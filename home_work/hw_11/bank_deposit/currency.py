@@ -3,9 +3,8 @@ import requests
 from dotenv import load_dotenv
 from home_work.hw_11.bank_deposit.currency_enum import Currency
 
-from log_.logging_setup import get_logger
-
-log = get_logger(__name__)
+from _logger.setup_methods import LoggerSets
+logger = LoggerSets.setup_std_logging()
 
 load_dotenv()
 
@@ -37,10 +36,10 @@ class CurrencyConverter:
         rates = CurrencyConverter._get_exchange_rates()
 
         if from_curr not in rates:
-            log.error(f"Unsupported currency: {from_curr}")
+            logger.error(f"Unsupported currency: {from_curr}")
             return False
         elif to_curr not in rates:
-            log.error(f"Unsupported currency: {to_curr}")
+            logger.error(f"Unsupported currency: {to_curr}")
             return False
         else:
             amount_in_usd_base_currency = amount / rates[from_curr]

@@ -1,9 +1,9 @@
 import pytest
-from log_.logging_setup import get_logger
+import logging
 from home_work.hw_11.library.book import Book
 from home_work.hw_11.library.reader import Reader
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 @pytest.fixture
@@ -24,7 +24,7 @@ def readers():
 
 def test_multiple_reservations(book, readers):
     pika, ash = readers
-    logger.test('Test 1: Multiple reservation flow')
+    logger.info('Test 1: Multiple reservation flow')
     assert pika.reserve_book(book)
     assert not ash.reserve_book(book)
     assert pika.cancel_reserve(book)
@@ -33,7 +33,7 @@ def test_multiple_reservations(book, readers):
 
 def test_get_book_flow(book, readers):
     pika, ash = readers
-    logger.test('Test 2: Get book flow')
+    logger.info('Test 2: Get book flow')
     assert pika.reserve_book(book)
     assert pika.get_book(book)
     assert not ash.get_book(book)
@@ -44,7 +44,7 @@ def test_get_book_flow(book, readers):
 
 def test_invalid_return(book, readers):
     pika, ash = readers
-    logger.test('Test 3: Invalid return attempt')
+    logger.info('Test 3: Invalid return attempt')
     assert pika.reserve_book(book)
     assert pika.get_book(book)
     assert not ash.return_book(book)

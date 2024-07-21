@@ -1,8 +1,8 @@
 import pytest
-from log_.logging_setup import get_logger
+import logging
 from home_work.hw_11.library.book import Book
 
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 @pytest.fixture
@@ -15,7 +15,7 @@ def book():
 
 
 def test_reserve_not_reserved(book):
-    logger.test('Test 1: reserving a book that is not currently reserved')
+    logger.info('Test 1: reserving a book that is not currently reserved')
     result = book.reserve("Pikachu")
     assert result
     assert book.reserved
@@ -23,21 +23,21 @@ def test_reserve_not_reserved(book):
 
 
 def test_reserve_already_reserved(book):
-    logger.test('Test 2: attempting to reserve a book that is already reserved')
+    logger.info('Test 2: attempting to reserve a book that is already reserved')
     book.reserve("Ash")
     result = book.reserve("Pikachu")
     assert not result
 
 
 def test_reserve_while_booked(book):
-    logger.test('Test 3: attempting to reserve a book that is already checked out')
+    logger.info('Test 3: attempting to reserve a book that is already checked out')
     book.get_book("Ash")
     result = book.reserve("Pikachu")
     assert not result
 
 
 def test_cancel_reservation_success(book):
-    logger.test('Test 4: successfully cancelling a reservation')
+    logger.info('Test 4: successfully cancelling a reservation')
     book.reserve("Pikachu")
     result = book.cancel_reserve("Pikachu")
     assert result
@@ -46,14 +46,14 @@ def test_cancel_reservation_success(book):
 
 
 def test_cancel_reservation_wrong_user(book):
-    logger.test('Test 5: attempting to cancel a reservation by someone other')
+    logger.info('Test 5: attempting to cancel a reservation by someone other')
     book.reserve("Ash")
     result = book.cancel_reserve("Pikachu")
     assert not result
 
 
 def test_get_book_success(book):
-    logger.test('Test 6: successfully getting a book after reserving it')
+    logger.info('Test 6: successfully getting a book after reserving it')
     book.reserve("Pikachu")
     result = book.get_book("Pikachu")
     assert result
@@ -61,14 +61,14 @@ def test_get_book_success(book):
 
 
 def test_get_book_reserved_by_another(book):
-    logger.test('Test 7: attempting to get a book that is reserved by another user')
+    logger.info('Test 7: attempting to get a book that is reserved by another user')
     book.reserve("Ash")
     result = book.get_book("Pikachu")
     assert not result
 
 
 def test_return_book_success(book):
-    logger.test('Test 8: successfully returning a book that was checked out')
+    logger.info('Test 8: successfully returning a book that was checked out')
     book.get_book("Pikachu")
     result = book.return_book("Pikachu")
     assert result
@@ -76,7 +76,7 @@ def test_return_book_success(book):
 
 
 def test_return_book_not_the_borrower(book):
-    logger.test('Test 9: attempting to return a book by someone who didn\'t check it out')
+    logger.info('Test 9: attempting to return a book by someone who didn\'t check it out')
     book.get_book("Ash")
     result = book.return_book("Pikachu")
     assert not result
