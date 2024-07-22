@@ -33,14 +33,3 @@ class LoggerSets:
         current_time = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         html_report_path = os.path.join(report_dir, f'test_report_{current_time}.html')
         config.option.htmlpath = html_report_path
-
-    @staticmethod
-    def setup_std_logging():
-        config_path = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), 'std_logging.conf')
-
-        with open(config_path, 'r') as file:
-            log_config = json.load(file)
-
-        logging.config.dictConfig(log_config)
-        return logging.getLogger()

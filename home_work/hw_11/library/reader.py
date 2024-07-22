@@ -1,5 +1,6 @@
-from _logger.setup_methods import LoggerSets
-logger = LoggerSets.setup_std_logging()
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Reader:

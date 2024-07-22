@@ -1,10 +1,10 @@
 import os
 import requests
+import logging
 from dotenv import load_dotenv
 from home_work.hw_11.bank_deposit.currency_enum import Currency
 
-from _logger.setup_methods import LoggerSets
-logger = LoggerSets.setup_std_logging()
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 

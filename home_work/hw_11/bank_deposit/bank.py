@@ -1,7 +1,8 @@
 from home_work.hw_11.bank_deposit.currency import CurrencyConverter
 from home_work.hw_11.bank_deposit.deposit import Deposit
-from _logger.setup_methods import LoggerSets
-logger = LoggerSets.setup_std_logging()
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Bank:
