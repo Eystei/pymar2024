@@ -3,8 +3,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-
-
 class Book:
     def __init__(self, book_name, author, num_pages, isbn):
         self.book_name = book_name
