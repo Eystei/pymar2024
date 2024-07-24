@@ -1,10 +1,9 @@
 from unittest import TestCase, main
-from log_.logging_setup import get_logger
+import logging
 from home_work.hw_11.library.book import Book
 from home_work.hw_11.library.reader import Reader
 
-
-logger = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class TestLibraryInteractions(TestCase):
@@ -19,14 +18,14 @@ class TestLibraryInteractions(TestCase):
         self.ash = Reader("Ash")
 
     def test_multiple_reservations(self):
-        logger.test('Test 1: Multiple reservation flow')
+        logger.info('Test 1: Multiple reservation flow')
         self.assertTrue(self.pika.reserve_book(self.book))
         self.assertFalse(self.ash.reserve_book(self.book))
         self.assertTrue(self.pika.cancel_reserve(self.book))
         self.assertTrue(self.ash.reserve_book(self.book))
 
     def test_get_book_flow(self):
-        logger.test('Test 2: Get book flow')
+        logger.info('Test 2: Get book flow')
         self.assertTrue(self.pika.reserve_book(self.book))
         self.assertTrue(self.pika.get_book(self.book))
         self.assertFalse(self.ash.get_book(self.book))
@@ -35,7 +34,7 @@ class TestLibraryInteractions(TestCase):
         self.assertTrue(self.ash.get_book(self.book))
 
     def test_invalid_return(self):
-        logger.test('Test 3: Invalid return attempt')
+        logger.info('Test 3: Invalid return attempt')
         self.assertTrue(self.pika.reserve_book(self.book))
         self.assertTrue(self.pika.get_book(self.book))
         self.assertFalse(self.ash.return_book(self.book))

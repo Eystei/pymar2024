@@ -1,6 +1,6 @@
-from log_.logging_setup import get_logger
+import logging
 
-log = get_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class Book:
@@ -15,46 +15,46 @@ class Book:
 
     def reserve(self, reader_name):
         if self.reserved:
-            log.info(f"Sorry, this book is reserved by {self.reserved_by}.")
+            logger.info(f"Sorry, this book is reserved by {self.reserved_by}.")
             return False
         elif self.reader_name:
-            log.info(f"Sorry, this book is currently being read by {self.reader_name}.")
+            logger.info(f"Sorry, this book is currently being read by {self.reader_name}.")
             return False
         else:
             self.reserved = True
             self.reserved_by = reader_name
-            log.success("Good choice! Book reserved.")
+            logger.info("Good choice! Book reserved.")
             return True
 
     def cancel_reserve(self, reader_name):
         if reader_name != self.reserved_by:
-            log.info("You didn't reserve this book.")
+            logger.info("You didn't reserve this book.")
             return False
         else:
             self.reserved = False
             self.reserved_by = None
-            log.success("Book reservation cancelled.")
+            logger.info("Book reservation cancelled.")
             return True
 
     def get_book(self, reader_name):
         if self.reader_name:
-            log.warning(f"This book is currently being read by {self.reader_name}.")
+            logger.warning(f"This book is currently being read by {self.reader_name}.")
             return False
         elif self.reserved and self.reserved_by != reader_name:
-            log.info(f"Oops. This book is reserved by {self.reserved_by}.")
+            logger.info(f"Oops. This book is reserved by {self.reserved_by}.")
             return False
         else:
             self.reader_name = reader_name
             self.reserved = False
             self.reserved_by = None
-            log.success("Good choice! Enjoy it!")
+            logger.info("Good choice! Enjoy it!")
             return True
 
     def return_book(self, reader_name):
         if reader_name == self.reader_name:
             self.reader_name = None
-            log.success("Thanks. Book has been returned.")
+            logger.info("Thanks. Book has been returned.")
             return True
         else:
-            log.info("You didn't get this book.")
+            logger.info("You didn't get this book.")
             return False
