@@ -1,5 +1,5 @@
 *** Settings ***
-Library           deposit_keywords.py
+Library           ../resources/deposit_keywords.py
 Library           BuiltIn
 
 *** Variables ***
