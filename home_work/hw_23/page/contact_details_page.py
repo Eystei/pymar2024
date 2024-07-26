@@ -1,0 +1,16 @@
+class ContactDetailsPage:
+    LOCATOR_BTN_EDIT_CONTACT = '//button[@id="edit-contact"]'
+    LOCATOR_BTN_DELETE_CONTACT = '//button[@id="delete"]'
+    LOCATOR_BTN_RETURN_TO_CONTACT_LIST = '//button[@id="return"]'
+
+    LOCATOR_ROW_FIRST_NAME = '//span[@id="firstName"]'
+    LOCATOR_ROW_LAST_NAME = '//span[@id="lastName"]'
+    LOCATOR_ROW_DATE_OF_BIRTH = '//span[@id="birthdate"]'
+    LOCATOR_ROW_EMAIL = '//span[@id="email"]'
+    LOCATOR_ROW_PHONE = '//span[@id="phone"]'
+    LOCATOR_ROW_STR_ADDRESS_ONE = '//span[@id="street1"]'
+    LOCATOR_ROW_STR_ADDRESS_TWO = '//span[@id="street2"]'
+    LOCATOR_ROW_CITY = '//span[@id="city"]'
+    LOCATOR_ROW_STATE_OF_PROVINCE = '//span[@id="stateProvince"]'
+    LOCATOR_ROW_POSTAL_CODE = '//span[@id="postalCode"]'
+    LOCATOR_ROW_COUNTRY = '//span[@id="country"]'
