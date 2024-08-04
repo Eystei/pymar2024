@@ -61,7 +61,7 @@ def test_delete_contact_003(browsers_chrome):
     contact_details_helper.get_btn_delete_contact().click()
 
     logger.info('Submit contact deleting')
-    contact_details_helper.handle_confirmation_alert(confirm=True)
+    contact_details_helper.confirmation_alert_confirm()
 
     logger.info(f'Check header {Headers.CONTACT_LIST}')
     common_elements_helper.get_page_title(Headers.CONTACT_LIST)

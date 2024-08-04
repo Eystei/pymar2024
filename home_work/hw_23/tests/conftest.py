@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture
 def browsers_chrome(request):
     browser_count = request.param
 
@@ -23,7 +23,6 @@ def browsers_chrome(request):
 
     for _ in range(browser_count):
         driver = webdriver.Chrome(service=service, options=options)
-        driver.set_window_size(1024, 768)
         drivers.append(driver)
 
     yield drivers

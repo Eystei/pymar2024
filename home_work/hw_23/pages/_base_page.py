@@ -25,17 +25,21 @@ class BasePage:
 
     def find_element_visible(self, locator, time=MEDIUM_TIMEOUT):
         return WebDriverWait(
-            self.driver, time).until(EC.visibility_of_element_located(locator),
-                                     message=f"Can't find visible element by locator {locator}")
+            self.driver, time).until(
+            EC.visibility_of_element_located(locator),
+            message=f"Can't find visible element by locator {locator}")
 
     def element_invisible(self, locator, time=MEDIUM_TIMEOUT):
-        return WebDriverWait(self.driver, time).until(EC.invisibility_of_element(locator),
-                                                      message=f"Can find visible element by locator {locator}")
+        return WebDriverWait(self.driver, time).until(
+            EC.invisibility_of_element(locator),
+            message=f"Element located by {locator} is still visible after {time} seconds"
+        )
 
     def find_all_elements(self, locator, time=MEDIUM_TIMEOUT):
         try:
-            return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),
-                                                          message=f"Can't find elements by locator {locator}")
+            return WebDriverWait(self.driver, time).until(
+                EC.presence_of_all_elements_located(locator),
+                message=f"Can't find elements by locator {locator}")
         except TimeoutException as e:
             logger.error("[{}] Element did not load. ".format(str(datetime.now())) + str(e))
             return None
@@ -43,10 +47,22 @@ class BasePage:
     def execute_scroll_into_view(self, element):
         return self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    def handle_confirmation_alert(self, confirm=True) -> str:
-        alert = WebDriverWait(self.driver, SHORT_TIMEOUT).until(EC.alert_is_present(),
-                                                                message="Alert not found within the given time")
+    def confirmation_alert_confirm(self) -> str:
+        alert = WebDriverWait(self.driver, SHORT_TIMEOUT).until(
+            EC.alert_is_present(),
+            message="Alert not found within the given time"
+        )
         alert_text = alert.text
-        alert.accept() if confirm else alert.dismiss()
+        alert.accept()
+
+        return alert_text
+
+    def confirmation_alert_dismiss(self) -> str:
+        alert = WebDriverWait(self.driver, SHORT_TIMEOUT).until(
+            EC.alert_is_present(),
+            message="Alert not found within the given time"
+        )
+        alert_text = alert.text
+        alert.dismiss()
 
         return alert_text
