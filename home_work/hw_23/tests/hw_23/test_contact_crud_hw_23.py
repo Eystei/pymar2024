@@ -1,10 +1,10 @@
-from home_work.hw_23.page.add_user_page import AddUserPageLocators
-from home_work.hw_23.page.common_el_page import CommonElementsLocators
-from home_work.hw_23.page.contact_add_page import AddContactLocators
-from home_work.hw_23.page.contact_details_page import ContactDetailsPage
-from home_work.hw_23.page.contact_edit_page import ContactEditPage
-from home_work.hw_23.page.contact_list_page import ContactListLocators
-from home_work.hw_23.page.login_page import LoginPageLocators
+from home_work.hw_23.pages.add_user_page import AddUserPageLocators
+from home_work.hw_23.pages.common_el_page import CommonElementsLocators
+from home_work.hw_23.pages.contact_add_page import AddContactLocators
+from home_work.hw_23.pages.contact_details_page import ContactDetailsPage
+from home_work.hw_23.pages.contact_edit_page import ContactEditPage
+from home_work.hw_23.pages.contact_list_page import ContactListLocators
+from home_work.hw_23.pages.login_page import LoginPageLocators
 
 
 def print_(str_):
