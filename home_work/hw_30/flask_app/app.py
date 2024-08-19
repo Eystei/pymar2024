@@ -8,7 +8,8 @@ images = [
     "https://media.tenor.com/t0eFbcxLGgIAAAAC/fat-cat-laser-eyes.gif",
     "https://media.tenor.com/pOS38tUuVnQAAAAd/cat-meme.gif",
     "https://media.tenor.com/lQlIBQeeruwAAAAd/wanted-cat.gif"
-    ]
+]
+
 
 @app.route('/')
 def index():
